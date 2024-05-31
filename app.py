@@ -14,13 +14,11 @@ from langchain_anthropic import ChatAnthropic
 
 from datetime import datetime
 
-# Ensure the results directory exists
 if not os.path.exists("Results"):
     os.makedirs("Results")
     
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-# Load environment variables
 load_dotenv()
 
 # Setup LLM function
@@ -210,7 +208,6 @@ if submit_button:
     sys.stdout = StreamToExpander(process_output_expander)
     
     try:
-        # Update the agents and tasks with the user's inputs
         outliner_agent.goal += f" The blog post should be tailored to {target_audience} and have a {tone} tone."
         researcher_agent.goal += f" The research should focus on the key points provided: {key_points}."
         content_writer_agent.goal += f" The blog post should be around {length} words and cover the following key points: {key_points}. The tone should be {tone}."
@@ -264,7 +261,6 @@ if submit_button:
             output_file=f"Results/outreach-[{timestamp}].md"
         )
 
-        # Define the Crew
         research_crew = Crew(
             agents=[
                 boss_agent,
