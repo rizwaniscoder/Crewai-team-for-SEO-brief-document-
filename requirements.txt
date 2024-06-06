@@ -2,3 +2,4 @@ crewai[tools]
 google-search-results
 streamlit
 langchain_anthropic
+python-docx
